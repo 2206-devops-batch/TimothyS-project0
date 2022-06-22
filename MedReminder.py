@@ -82,9 +82,11 @@ def get_current_time_sub_12(time):
 if __name__ == '__main__':
     # Start of program
     print('Hello and welcome to your medication reminder!')
+    print('\n')
 
     # Input day of the week and current time
     current_day = get_current_day()
+    print('\n')
     current_time = get_current_time()
 
     current_time_plus_1 = str(int(current_time)+100)
@@ -105,6 +107,7 @@ if __name__ == '__main__':
         MedList, current_day, get_current_time_sub_12(current_time_minus_2))
 
     # Showing prescribed medications at day and hour of the current time (+/- 2 hour range)
+    print('\n')
     print('Here are your prescribed medications for ' +
           current_day + ' at the ' + current_time + ' hour:')
     print(current_meds_minus_2)
