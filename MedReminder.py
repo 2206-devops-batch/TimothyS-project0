@@ -6,6 +6,9 @@ from operator import itemgetter
 import Medications
 import datetime
 
+days_of_week = ["MONDAY", "TUESDAY", "WEDNESDAY",
+                "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+
 
 def get_current_time():
     prompt = 'Please enter the current time in 24-hour format (0000-2359): '
@@ -15,6 +18,7 @@ def get_current_time():
     time_range = [0000, 2359]
     hour_range = [00, 23]
     minute_range = [00, 59]
+
     verbose = False
 
     # Did they enter a numbr
@@ -53,19 +57,16 @@ def get_current_time():
 
 
 def get_current_day():
+
     try:
         current_day = str(
             input('Please type the current day of the week: ')).upper()
-        if current_day not in Medications.days_of_week:
+        if current_day not in days_of_week:
             raise ValueError('Not An Acceptable Day Of The Week')
     except (ValueError, IndexError):
         exit(
-            f'Not An Acceptable Day Of The Week\nPlease Use One Of {Medications.days_of_week}')
+            f'Not An Acceptable Day Of The Week\nPlease Use One Of {days_of_week}')
     return current_day
-
-
-def display_time(time):
-    return time
 
 
 def get_current_time_sub_12(time):
@@ -103,8 +104,9 @@ if __name__ == '__main__':
     current_meds_minus_2 = Medications.get_meds(
         MedList, current_day, get_current_time_sub_12(current_time_minus_2))
 
+    # Showing prescribed medications at day and hour of the current time (+/- 2 hour range)
     print('Here are your prescribed medications for ' +
-          current_day + ' at ' + current_time + ':')
+          current_day + ' at the ' + current_time + ' hour:')
     print(current_meds_minus_2)
     print(current_meds_minus_1)
     print(current_meds)

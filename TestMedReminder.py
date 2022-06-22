@@ -1,22 +1,15 @@
 import random
 import unittest
+from MedReminder import days_of_week
 import Medications
-import MedReminder
 from Clients.TimothyMedList import MedList as test_meds
 
 
 class TestEndcodeImage(unittest.TestCase):
 
-    # def test_get_monday_meds(self):
-    #     self.assertDictEqual(
-    #         MedList["MONDAY"]["1200"], {"Pill C"})
-
-    # def test_get_all_noon_and_midnight_meds(self):
-    #     pass
-
     def test_get_meds_today(self):
         print("Med List Test: Get Meds Today \t\t\t| Started")
-        today = random.choice(Medications["days_of_week"])
+        today = random.choice(days_of_week)
         for hour in range(24):
             hour_24 = "0" + str(hour) + "00" if hour < 10 else str(hour) + "00"
 
